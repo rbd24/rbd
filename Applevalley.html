@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RoadBreakdown</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2b2929;
+            color: #333;
+        }
+
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff6600;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .dropdown-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .dropdown {
+            flex: 0 0 30%;
+            text-align: center;
+        }
+
+        .dropdown input,
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            width: 125%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .feature-item img {
+            width: 700px;
+            height: 394px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .feature-item div {
+            padding: 20px;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin: 0px;
+        }
+
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .dropdown {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+
+            .features {
+                padding: 10px;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-item img {
+                width: 100%;
+                height: auto;
+            }
+
+            .feature-item div {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+
+        #searchButton {
+            flex: 0 0 30%;
+            text-align: center;
+            margin-top: 0px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ff6600;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #searchButton:hover {
+            background-color: #ffcc00;
+        }
+
+        /* Styling for the cityservice */
+        .cityservice {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 50px;
+            color: #ff6600;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px; /* Adjust padding as needed */
+            border-radius: 10px; /* Add border radius for rounded corners */
+            width: max-content; /* Set width to max-content */
+            margin-left: auto; /* Set left margin to auto */
+            margin-right: auto; /* Set right margin to auto */
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>RoadBreakdown.com</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Advertise.html">Advertise</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="Contact Us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Autocomplete input for selecting state, city, and service -->
+<div class="dropdown-container">
+    <div class="dropdown">
+        <input type="text" id="states" placeholder="Enter State">
+    </div>
+
+    <div class="dropdown">
+        <input type="text" id="cities" placeholder="Enter City">
+    </div>
+
+    <div class="dropdown">
+        <select class="dropdown" id="services" style="font-family: 'Roboto', sans-serif; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); color: #333; width: 100%;">
+            <option value="Tow Truck">Tow Truck</option>
+            <option value="Tire Repair">Tire Repair</option>
+            <option value="Fuel Delivery">Fuel Delivery</option>
+            <option value="Jump Start">Jump Start</option>
+        </select>
+    </div>
+
+    <button id="searchButton">Search</button>
+</div>
+   
+<!-- cityservice -->
+<div class="cityservice">
+    Apply Valley, CA - Towing
+</div>
+
+
+<!-- Features Section -->
+<div class="features">
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div>
+
+     <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="newadsize2.jpg" alt="Service 3">
+        <div>
+            <p>Description of service 3.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 4.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 5.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="newadsize2.jpg" alt="Service 3">
+        <div>
+            <p>Description of service 6fgadfgdafgertdfsdfmldfok
+                dkfnlskdnfk
+                dkfhjsdkjh
+                sdnfgjksnd
+                hdi
+                gqaergherh.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 RoadBreakdown.com All rights reserved.</p>
+</footer>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

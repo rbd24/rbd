@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RoadBreakdown</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        body {
+            background: url("image5.jpg") center/cover no-repeat;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff6600;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .dropdown-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .dropdown {
+            flex: 0 0 30%;
+            text-align: center;
+            position: relative;
+        }
+
+        .dropdown input,
+        .dropdown select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #333;
+            transition: all 0.3s ease;
+            width: calc(100% - 22px); /* Adjusted width */
+        }
+
+        .dropdown select {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+
+        .features figure {
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #222;
+            padding: 20px;
+        }
+
+        .features figure img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .features figure:hover img {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: #000;
+            color: #999;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Add custom fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .dropdown {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>RoadBreakdown.com</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="location.html">Locations</a></li>
+            <li><a href="listing.html">Listing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Autocomplete input for selecting state, city, and service -->
+<div class="dropdown-container">
+    <div class="dropdown">
+        <input type="text" id="states" placeholder="Enter State">
+        <select id="stateSelect" style="font-family: 'Roboto', sans-serif; font-size: 16px;">
+            <option value="">Select State</option>
+        </select>
+    </div>
+
+    <div class="dropdown" id="cityDropdown">
+        <input type="text" id="cities" placeholder="Enter City">
+        <select id="citySelect" style="font-family: 'Roboto', sans-serif; font-size: 16px;">
+            <option value="">Select City</option>
+        </select>
+    </div>
+
+    <div class="dropdown">
+        <input type="text" id="services" placeholder="Enter Service">
+        <select id="serviceSelect" style="font-family: 'Roboto', sans-serif; font-size: 16px;">
+            <option value="">Select Service</option>
+        </select>
+    </div>
+</div>
+
+<section class="features">
+    <figure>
+        <img src="imagesnow2.jpg" alt="">
+        <figcaption>Winter Maintenance</figcaption>
+    </figure>
+    <figure>
+        <img src="imagesunny2.jpg" alt="">
+        <figcaption>Summer Checkup</figcaption>
+    </figure>
+    <figure>
+        <img src="imagetire2.jpg" alt="">
+        <figcaption>Tire Service</figcaption>
+    </figure>
+</section>
+
+<footer>
+    <p>&copy; 2024 RoadBreakdown.com. All rights reserved.</p>
+</footer>
+
+<script>
+    // Sample data for states, cities, and services
+    var states = ["California", "New York", "Texas", "Florida"];
+    var cities = {
+        "California": ["Los Angeles", "San Francisco", "San Diego"],
+        "New York": ["New York City", "Buffalo", "Albany"],
+        "Texas": ["Houston", "Dallas", "Austin"],
+        "Florida": ["Miami", "Orlando", "Tampa"]
+    };
+    var services = ["Towing", "Jump Start", "Flat Tire", "Fuel Delivery"];
+
+    // Populate the state dropdown
+    var stateSelect = document.getElementById("stateSelect");
+    states.forEach(function (state) {
+        var option = document.createElement("option");
+        option.text = state;
+        option.value = state;
+        stateSelect.add(option);
+    });
+
+    // Populate the city dropdown based on the selected state
+    document.getElementById("stateSelect").addEventListener("change", function () {
+        var state = this.value;
+        var citySelect = document.getElementById("citySelect");
+        citySelect.innerHTML = "<option value=''>Select City</option>";
+        if (cities[state]) {
+            cities[state].forEach(function (city) {
+                var option = document.createElement("option");
+                option.text = city;
+                option.value = city;
+                citySelect.add(option);
+            });
+        }
+    });
+
+    // Populate the service dropdown
+    var serviceSelect = document.getElementById("serviceSelect");
+    services.forEach(function (service) {
+        var option = document.createElement("option");
+        option.text = service;
+        option.value = service;
+        serviceSelect.add(option);
+    });
+
+    // Autocomplete for state and city inputs
+    $("#states").autocomplete({
+        source: states
+    });
+    $("#cities").autocomplete({
+        source: function (request, response) {
+            var state = $("#states").val();
+            if (cities[state]) {
+                var filteredCities = cities[state].filter(function (city) {
+                    return city.toLowerCase().indexOf(request.term.toLowerCase()) !== -1;
+                });
+                response(filteredCities);
+            }
+        }
+    });
+    $("#services").autocomplete({
+        source: services
+    });
+</script>
+</body>
+</html>

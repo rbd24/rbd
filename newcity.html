@@ -1,0 +1,257 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>RoadBreakdown</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .dropdown-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .dropdown {
+            flex: 0 0 30%;
+            text-align: center;
+        }
+
+        .dropdown input,
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .features div {
+    text-align: center;
+    margin: 10px;
+    flex: 0 0 100%; /* Set to 100% width */
+}
+
+.features figure {
+    display: inline-block; /* Adjust display */
+    position: relative; /* Add position */
+}
+
+.features img {
+    width: 100%;
+    border-radius: 10px; /* Adjust border radius */
+    transition: transform 0.3s ease;
+}
+
+.features div:nth-child(odd) figure img {
+    transform: translateY(-20%);
+}
+
+.features div:nth-child(even) figure img {
+    transform: translateY(20%);
+}
+
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .dropdown {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+
+            .features {
+                padding: 10px;
+            }
+
+            .features div {
+                flex: 0 0 45%;
+            }
+        }
+
+        #searchButton {
+            flex: 0 0 30%;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ff6600;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #searchButton:hover {
+            background-color: #ffcc00;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CityNAME</h1>
+    <nav>
+        <ul>
+            <li><a href="newnew.html">Home</a></li>
+            <li><a href="location.html">Locations</a></li>
+            <li><a href="listing.html">Listing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Autocomplete input for selecting state, city, and service -->
+<div class="dropdown-container">
+    <div class="dropdown">
+        <input type="text" id="states" placeholder="Enter State">
+    </div>
+
+    <div class="dropdown">
+        <input type="text" id="cities" placeholder="Enter City">
+    </div>
+
+    <div class="dropdown">
+        <select  class="dropdown" id="services" style="font-family: 'Roboto', sans-serif; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); color: #333; width: 100%;">
+            <option value="Tow Truck">Tow Truck</option>
+            <option value="Tire Repair">Tire Repair</option>
+            <option value="Fuel Delivery">Fuel Delivery</option>
+            <option value="Jump Start">Jump Start</option>
+        </select>
+    </div>
+
+    <button id="searchButton">Search</button>
+</div>
+
+<!-- Features Section -->
+<div class="features">
+    <div>
+        <figure>
+            <img src="https://via.placeholder.com/150" alt="Service 1">
+        </figure>
+        <h3>Service 1</h3>
+        <p>Description of service 1.</p>
+    </div>
+
+    <div>
+        <figure>
+            <img src="https://via.placeholder.com/150" alt="Service 2">
+        </figure>
+        <h3>Service 2</h3>
+        <p>Description of service 2.</p>
+    </div>
+
+    <div>
+        <figure>
+            <img src="https://via.placeholder.com/150" alt="Service 3">
+        </figure>
+        <h3>Service 3</h3>
+        <p>Description of service 3.</p>
+    </div>
+    <div>
+        <figure>
+            <img src="https://via.placeholder.com/150" alt="Service 3">
+        </figure>
+        <h3>Service 3</h3>
+        <p>Description of service 3.</p>
+        <div>
+            <figure>
+                <img src="https://via.placeholder.com/150" alt="Service 3">
+            </figure>
+            <h3>Service 3</h3>
+            <p>Description of service 3.</p>
+            <div>
+                <figure>
+                    <img src="https://via.placeholder.com/150" alt="Service 3">
+                </figure>
+                <h3>Service 3</h3>
+                <p>Description of service 3.</p>
+</div>
+
+<footer>
+    <p>&copy; 2024 RoadBreakdown.com All rights reserved.</p>
+</footer>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
