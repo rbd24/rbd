@@ -1,4 +1,8 @@
-// Sample data for autocomplete
+$(document).ready(function() {
+    // Sample data for autocomplete
+
+    var services = ["Tow Truck", "Tire Repair", "Fuel Delivery", "Jump Start"];
+
     var states = [
         "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
         "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
@@ -97,6 +101,10 @@
         "Whittier, CA", "Wildomar, CA", "Williams, CA", "Willits, CA", "Willows, CA", "Wilmington, CA", "Wilseyville, CA", "Windsor, CA",
         "Winters, CA", "Winton, CA", "Woodlake, CA", "Woodland Hills, CA", "Woodland, CA", "Wrightwood, CA", "Yermo, CA", "Yorba Linda, CA",
         "Yountville, CA", "Yreka, CA", "Yuba City, CA", "Yucaipa, CA", "Yucca Valley, CA"
+        ],
+        
+    "Texas": [
+        "Austin, TX", "Houston, TX"
     ]
 };
 
@@ -104,18 +112,22 @@
     var services = ["Tow Truck", "Tire Repair", "Fuel Delivery", "Jump Start"];
 
     // Autocomplete for states
-    $("#states").autocomplete({
+     $("#states").autocomplete({
         source: states,
         minLength: 0,
-        select: function (event, ui) {
+        select: function(event, ui) {
             var selectedState = ui.item.value;
-            $("#cityDropdown").show();
             $("#cities").autocomplete({
                 source: cities[selectedState]
-            });
+            }).focus().autocomplete("search", "");
         }
-    }).focus(function () {
+    }).focus(function() {
         $(this).autocomplete("search", "");
+    });
+
+    // Autocomplete for cities
+    $("#cities").autocomplete({
+        minLength: 0
     });
 
     // Autocomplete for services
@@ -136,8 +148,8 @@
         var url;
         if (selectedCity === "Apple Valley, CA" && selectedService === "Tow Truck") {
             url = "Applevalley.html";
-        } else if (selectedCity === "Acton, CA" && selectedService === "Tire Repair") {
-            url = "acton_tire_repair.html";
+        } else if (selectedCity === "Hesperia, CA" && selectedService === "Tow Truck") {
+            url = "hesperia.html";
         } else if (selectedCity === "Acton, CA" && selectedService === "Fuel Delivery") {
             url = "acton_fuel_delivery.html";
         } else if (selectedCity === "Acton, CA" && selectedService === "Jump Start") {
@@ -152,4 +164,4 @@
         // Redirect to the appropriate page
         window.location.assign(url);
     });
-   
+});

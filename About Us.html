@@ -8,12 +8,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
-        body {
-            background: url("image5.jpg") center/cover no-repeat;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-            margin: 100;
+        html, body {
+            height: 100%;
+            margin: 0;
             padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background: url("image1.jpg") center/cover no-repeat;
+            background-color: #2b2929;
         }
 
         header {
@@ -91,6 +97,62 @@
             cursor: pointer;
         }
 
+        .slogan {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 50px auto;
+            color: #ff6600;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: max-content;
+        }
+
+        .cta {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            margin: 40px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: max-content;
+        }
+
+        .cta a {
+            color: #ff6600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .cta a:hover {
+            color: #ffcc00;
+        }
+
+        .about {
+            text-align: center;
+            font-size: 18px;
+            color: #fff;
+            margin: 40px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .about h2 {
+            font-size: 24px;
+            color: #ff6600;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            margin: 0;
+        }
+
         .features {
             display: flex;
             justify-content: center;
@@ -126,7 +188,8 @@
             color: #fff;
             text-align: center;
             padding: 20px 0;
-            margin: 0px;
+            flex-shrink: 0;
+            width: 100%;
         }
 
         footer p {
@@ -150,11 +213,6 @@
                 align-items: center;
             }
 
-            .dropdown {
-                flex: 1 1 100%;
-                margin-bottom: 20px;
-            }
-
             .slogan {
                 font-size: 24px;
                 padding: 10px;
@@ -170,132 +228,38 @@
                 height: 150px;
             }
         }
-
-        /* Adjustments for the search button */
-        #searchButton {
-            flex: 0 0 30%;
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color:  #ff6600;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-left: auto; /* Set left margin to auto */
-            margin-right: auto; /* Set right margin to auto */
-        }
-
-        #searchButton:hover {
-            background-color: #ffcc00;
-        }
-
-        /* Styling for the slogan */
-        .slogan {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-top: 50px;
-            color: #ff6600;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px; /* Adjust padding as needed */
-            border-radius: 10px; /* Add border radius for rounded corners */
-            width: max-content; /* Set width to max-content */
-            margin-left: auto; /* Set left margin to auto */
-            margin-right: auto; /* Set right margin to auto */
-        }
-
-        /* Styling for the call-to-action paragraph */
-        .cta {
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-            margin: 40px auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            width: max-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta a {
-            color: #ff6600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .cta a:hover {
-            color: #ffcc00;
-        }
-
-        /* Styling for the about us section */
-        .about {
-            text-align: center;
-            font-size: 18px;
-            color: #fff;
-            margin: 40px auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .about h2 {
-            font-size: 24px;
-            color: #ff6600;
-            margin-bottom: 20px;
-        }
-
-        .about p {
-            margin: 0;
-        }
     </style>
 </head>
 <body>
-<header>
-    <h1>RoadBreakdown.com</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="Advertise.html">Advertise</a></li>
-            <li><a href="About Us.html">About Us</a></li>
-            <li><a href="Contact Us.html">Contact Us</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <h1>RoadBreakdown.com</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Advertise.html">Advertise</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- Slogan -->
-<div class="slogan">
-    Your Premier Destination for Truck & Trailer Needs
-</div>
-
-<!-- About Us section -->
-<section class="about">
-    <h2>About Us</h2>
-    <p>With over 30 years of experience in the trucking and transportation industry, RoadBreakdown.com is your trusted partner for all your truck and trailer needs. Our extensive resources and knowledgeable team are dedicated to providing top-notch breakdown services, ensuring that you get back on the road quickly and safely. We understand the challenges you face and are here to offer reliable and efficient solutions.</p>
-</section>
-<section class="features">
-    <!-- Feature content can be added here -->
-</section>
-
-<script src="script.js"></script>
-</body>
-</html>
-
-  
-        <section class="features">
-            <!-- Feature content can be added here -->
-        </section>
+    <div class="slogan">
+        Your Premier Destination for Truck & Trailer Needs
     </div>
 
+    <section class="about">
+        <h2>About Us</h2>
+        <p>With over 30 years of experience in the trucking and transportation industry, RoadBreakdown.com is your trusted partner for all your truck and trailer needs. Our extensive resources and knowledgeable team are dedicated to providing top-notch breakdown services, ensuring that you get back on the road quickly and safely. We understand the challenges you face and are here to offer reliable and efficient solutions.</p>
+    </section>
+
+    <section class="features">
+        <!-- Feature content can be added here -->
+    </section>
+
     <footer>
-        <p>&copy; 2024 RoadBreakdown.com. All rights reserved.</p>
+        <p>&copy;  Copyright 2024 RoadBreakdown.com. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
+</html>

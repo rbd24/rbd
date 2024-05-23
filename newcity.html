@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>RoadBreakdown</title>
@@ -6,27 +6,34 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
-    <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #2b2929;
             color: #333;
         }
+        .ui-autocomplete {
+      max-height: 150px; /* Adjust the height as needed */
+      overflow-y: auto;  /* Enable vertical scrolling */
+      overflow-x: hidden; /* Hide horizontal scrollbar if present */
+      z-index: 1000;     /* Ensure it appears above other elements */
+  }
 
         header {
-            background-color: #333;
-            color: #fff;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
             text-align: center;
-            padding: 20px 0;
         }
 
         header h1 {
             font-size: 36px;
+            font-weight: bold;
             margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff6600;
         }
-
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -78,49 +85,42 @@
 
         .features {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
+            margin: 0 auto;
             max-width: 800px;
         }
 
-        .features div {
-    text-align: center;
-    margin: 10px;
-    flex: 0 0 100%; /* Set to 100% width */
-}
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            width: 125%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
 
-.features figure {
-    display: inline-block; /* Adjust display */
-    position: relative; /* Add position */
-}
+        .feature-item img {
+            width: 700px;
+            height: 394px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
 
-.features img {
-    width: 100%;
-    border-radius: 10px; /* Adjust border radius */
-    transition: transform 0.3s ease;
-}
-
-.features div:nth-child(odd) figure img {
-    transform: translateY(-20%);
-}
-
-.features div:nth-child(even) figure img {
-    transform: translateY(20%);
-}
-
+        .feature-item div {
+            padding: 20px;
+        }
 
         footer {
-            background-color: #333;
+            background: #000;
             color: #fff;
             text-align: center;
             padding: 20px 0;
+            margin: 0px;
         }
+
 
         footer p {
             margin: 0;
@@ -137,15 +137,26 @@
                 padding: 10px;
             }
 
-            .features div {
-                flex: 0 0 45%;
+            .feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-item img {
+                width: 100%;
+                height: auto;
+            }
+
+            .feature-item div {
+                width: 100%;
+                padding: 10px;
             }
         }
 
         #searchButton {
             flex: 0 0 30%;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 0px;
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
@@ -160,18 +171,33 @@
             background-color: #ffcc00;
         }
 
+        /* Styling for the cityservice */
+        .cityservice {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 50px;
+            color: #ff6600;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px; /* Adjust padding as needed */
+            border-radius: 10px; /* Add border radius for rounded corners */
+            width: max-content; /* Set width to max-content */
+            margin-left: auto; /* Set left margin to auto */
+            margin-right: auto; /* Set right margin to auto */
+        }
+
     </style>
 </head>
 <body>
 
 <header>
-    <h1>CityNAME</h1>
+    <h1>RoadBreakdown.com</h1>
     <nav>
         <ul>
-            <li><a href="newnew.html">Home</a></li>
-            <li><a href="location.html">Locations</a></li>
-            <li><a href="listing.html">Listing</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Advertise.html">Advertise</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="Contact Us.html">Contact Us</a></li>
         </ul>
     </nav>
 </header>
@@ -187,7 +213,8 @@
     </div>
 
     <div class="dropdown">
-        <select  class="dropdown" id="services" style="font-family: 'Roboto', sans-serif; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); color: #333; width: 100%;">
+        <select id="services">
+            <option value="" disabled selected hidden>Select Service</option>
             <option value="Tow Truck">Tow Truck</option>
             <option value="Tire Repair">Tire Repair</option>
             <option value="Fuel Delivery">Fuel Delivery</option>
@@ -197,54 +224,128 @@
 
     <button id="searchButton">Search</button>
 </div>
+   
+<!-- cityservice -->
+<div class="cityservice">
+    city, state - service
+</div>
+
 
 <!-- Features Section -->
 <div class="features">
-    <div>
-        <figure>
-            <img src="https://via.placeholder.com/150" alt="Service 1">
-        </figure>
-        <h3>Service 1</h3>
-        <p>Description of service 1.</p>
-    </div>
-
-    <div>
-        <figure>
-            <img src="https://via.placeholder.com/150" alt="Service 2">
-        </figure>
-        <h3>Service 2</h3>
-        <p>Description of service 2.</p>
-    </div>
-
-    <div>
-        <figure>
-            <img src="https://via.placeholder.com/150" alt="Service 3">
-        </figure>
-        <h3>Service 3</h3>
-        <p>Description of service 3.</p>
-    </div>
-    <div>
-        <figure>
-            <img src="https://via.placeholder.com/150" alt="Service 3">
-        </figure>
-        <h3>Service 3</h3>
-        <p>Description of service 3.</p>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
         <div>
-            <figure>
-                <img src="https://via.placeholder.com/150" alt="Service 3">
-            </figure>
-            <h3>Service 3</h3>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div>
+
+     <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 1.</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div> <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 2.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="newadsize2.jpg" alt="Service 3">
+        <div>
             <p>Description of service 3.</p>
-            <div>
-                <figure>
-                    <img src="https://via.placeholder.com/150" alt="Service 3">
-                </figure>
-                <h3>Service 3</h3>
-                <p>Description of service 3.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="ad1.jpg" alt="Service 1">
+        <div>
+            <p>Description of service 4.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="fastad.jpg" alt="Service 2">
+        <div>
+            <p>Description of service 5.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <img src="newadsize2.jpg" alt="Service 3">
+        <div>
+            <p>Description of service 6fgadfgdafgertdfsdfmldfok
+                dkfnlskdnfk
+                dkfhjsdkjh
+                sdnfgjksnd
+                hdi
+                gqaergherh.</p>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <p>&copy; 2024 RoadBreakdown.com All rights reserved.</p>
+    <p>&copy; Copyright 2024 RoadBreakdown.com. All rights reserved.</p>
 </footer>
 
 <!-- jQuery -->

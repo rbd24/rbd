@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoadBreakdown</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
-
         body {
-            background: url("image1.jpg") center/cover no-repeat;
-            background-color: #2b2929;
+            background: url("image5.jpg") center/cover no-repeat;
+            color: #fff;
             font-family: 'Roboto', sans-serif;
-            margin: 0; /* Adjusted margin to 0 */
+            margin: 100;
             padding: 0;
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            display: flex;
-            flex-direction: column;
         }
 
         header {
@@ -69,7 +63,7 @@
         .dropdown {
             flex: 0 0 30%;
             text-align: center;
-            position: relative; 
+            position: relative;
         }
 
         .dropdown input,
@@ -101,7 +95,6 @@
             align-items: center;
             flex-wrap: wrap;
             padding: 40px;
-            flex: 1;
         }
 
         .features figure {
@@ -130,51 +123,20 @@
             color: #fff;
             text-align: center;
             padding: 20px 0;
-            margin: 0px;
-            position: fixed;
-            width: 100%;
-            bottom: 0; /* Fixed at the bottom */
         }
 
         footer p {
             margin: 0;
         }
 
-       /* Responsive design */
-       @media screen and (max-width: 768px) {
+        /* Add custom fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
             .dropdown {
                 flex: 0 0 100%;
                 margin-bottom: 20px;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-
-            .dropdown-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .dropdown {
-                flex: 1 1 100%;
-                margin-bottom: 20px;
-            }
-
-            .slogan {
-                font-size: 24px;
-                padding: 10px;
-            }
-
-            .cta {
-                font-size: 18px;
-                padding: 10px;
-            }
-
-            .features figure img {
-                width: 150px;
-                height: 150px;
             }
         }
 
@@ -201,67 +163,18 @@
 
         /* Styling for the slogan */
         .slogan {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-top: 50px;
-            color: #ff6600;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px; /* Adjust padding as needed */
-            border-radius: 10px; /* Add border radius for rounded corners */
-            width: max-content; /* Set width to max-content */
-            margin-left: auto; /* Set left margin to auto */
-            margin-right: auto; /* Set right margin to auto */
-        }
-
-         /* Styling for the call-to-action paragraph */
-         .cta {
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-            margin: 231px auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            width: max-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta a {
-            color: #ff6600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .cta a:hover {
-            color: #ffcc00;
-        }
-
-        /* Styling for the about us section */
-        .about {
-            text-align: center;
-            font-size: 18px;
-            color: #fff;
-            margin: 40px auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .about h2 {
-            font-size: 24px;
-            color: #ff6600;
-            margin-bottom: 20px;
-        }
-
-        .about p {
-            margin: 0;
+         text-align: center;
+         font-size: 28px;
+        font-weight: bold;
+         margin-top: 50px;
+        color: #ff6600;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px 20px; /* Adjust padding as needed */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        width: max-content; /* Set width to max-content */
+        margin-left: auto; /* Set left margin to auto */
+        margin-right: auto; /* Set right margin to auto */
+          
         }
     </style>
 </head>
@@ -283,17 +196,46 @@
     Your Premier Destination for Truck & Trailer Needs
 </div>
 
-<!-- Call-to-action paragraph -->
-<section class="cta">
-    Call now to learn more about our advertising services! <a href="tel:+123456789">+1 (234) 567-8912</a>
-</section>
+<!-- Autocomplete input for selecting state, city, and services -->
+<div class="dropdown-container">
+    <div class="dropdown">
+        <input type="text" id="states" placeholder="Enter State">
+    </div>
+
+    <div class="dropdown" id="cityDropdown">
+        <input type="text" id="cities" placeholder="Enter City">
+    </div>
+
+    <select  class="dropdown" id="services" placeholder="Services" style="font-family: 'Roboto', sans-serif; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); color: #333; width: 100%;">
+        <option value="Tow Truck">Tow Truck</option>
+        <option value="Tire Repair">Tire Repair</option>
+        <option value="Fuel Delivery">Fuel Delivery</option>
+        <option value="Jump Start">Jump Start</option>
+    </select>
+   
+    <!-- Search button -->
+    <button id="searchButton">Search</button>
+</div>
+
 <section class="features">
-    <!-- Feature content can be added here -->
+    <figure>
+        <img src="imagesnow2.jpg" alt="">
+        <figcaption></figcaption>
+    </figure>
+    <figure>
+        <img src="imagesunny2.jpg" alt="">
+        <figcaption></figcaption>
+    </figure>
+    <figure>
+        <img src="imagetire2.jpg" alt="">
+        <figcaption></figcaption>
+    </figure>
 </section>
 
-<script src="script.js"></script>
 <footer>
-    <p>&copy; Copyright 2024 RoadBreakdown.com. All rights reserved.</p>
+    <p>&copy; 2024 RoadBreakdown.com. All rights reserved.</p>
 </footer>
+
+<script src="script.js"></script>
 </body>
 </html>
