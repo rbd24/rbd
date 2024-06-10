@@ -8,15 +8,26 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
-        body {
-            background: url("image1.jpg") center/cover no-repeat;
-            background-color: #2b2929;
-            font-family: 'Roboto', sans-serif;
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .ui-autocomplete {
+      max-height: 150px; /* Adjust the height as needed */
+      overflow-y: auto;  /* Enable vertical scrolling */
+      overflow-x: hidden; /* Hide horizontal scrollbar if present */
+      z-index: 1000;     /* Ensure it appears above other elements */
+  }
+
+
+        body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            background: url("image1.jpg") center/cover no-repeat;
+            background-color: #2b2929;
+            color: #fff;
         }
 
         header {
@@ -55,7 +66,6 @@
         nav ul li a:hover {
             color: #ffcc00;
         }
-
         .dropdown-container {
             display: flex;
             justify-content: space-between;
