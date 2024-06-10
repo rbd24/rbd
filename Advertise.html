@@ -8,20 +8,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
-
-html, body {
+        html, body {
             height: 100%;
             margin: 0;
+            padding: 0;
             font-family: 'Roboto', sans-serif;
         }
-
-        .ui-autocomplete {
-      max-height: 150px; /* Adjust the height as needed */
-      overflow-y: auto;  /* Enable vertical scrolling */
-      overflow-x: hidden; /* Hide horizontal scrollbar if present */
-      z-index: 1000;     /* Ensure it appears above other elements */
-  }
-
 
         body {
             display: flex;
@@ -29,12 +21,15 @@ html, body {
             background: url("image1.jpg") center/cover no-repeat;
             background-color: #2b2929;
             color: #fff;
+            overflow-x: hidden;
         }
 
         header {
-            padding: 20px;
+            width: 100%;
+            padding: 20px 0;
             background: rgba(0, 0, 0, 0.8);
             text-align: center;
+            box-sizing: border-box;
         }
 
         header h1 {
@@ -50,6 +45,7 @@ html, body {
             margin: 0;
             padding: 0;
             list-style-type: none;
+            text-align: center;
         }
 
         nav ul li {
@@ -67,6 +63,7 @@ html, body {
         nav ul li a:hover {
             color: #ffcc00;
         }
+
         .dropdown-container {
             display: flex;
             justify-content: space-between;
@@ -92,7 +89,7 @@ html, body {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             color: #333;
             transition: all 0.3s ease;
-            width: calc(100% - 22px); /* Adjusted width */
+            width: calc(100% - 22px);
         }
 
         .dropdown select {
@@ -143,7 +140,7 @@ html, body {
             margin: 0px;
             position: fixed;
             width: 100%;
-            bottom: 0; /* Fixed at the bottom */
+            bottom: 0;
         }
 
         footer p {
@@ -156,8 +153,6 @@ html, body {
                 flex: 0 0 100%;
                 margin-bottom: 20px;
             }
-
-           
 
             .dropdown-container {
                 flex-direction: column;
@@ -198,8 +193,8 @@ html, body {
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-left: auto; /* Set left margin to auto */
-            margin-right: auto; /* Set right margin to auto */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #searchButton:hover {
@@ -214,15 +209,15 @@ html, body {
             margin-top: 50px;
             color: #ff6600;
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px; /* Adjust padding as needed */
-            border-radius: 10px; /* Add border radius for rounded corners */
-            width: max-content; /* Set width to max-content */
-            margin-left: auto; /* Set left margin to auto */
-            margin-right: auto; /* Set right margin to auto */
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: max-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-         /* Styling for the call-to-action paragraph */
-         .cta {
+        /* Styling for the call-to-action paragraph */
+        .cta {
             text-align: center;
             font-size: 20px;
             font-weight: bold;
@@ -269,6 +264,13 @@ html, body {
 
         .about p {
             margin: 0;
+        }
+
+        .ui-autocomplete {
+            max-height: 150px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 1000;
         }
     </style>
 </head>
